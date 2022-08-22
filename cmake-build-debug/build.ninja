@@ -52,7 +52,7 @@ build cmake_object_order_depends_target_Maze_Generator: phony || CMakeFiles/Maze
 build CMakeFiles/Maze_Generator.dir/main.cpp.obj: CXX_COMPILER__Maze_Generator_Debug C$:/Users/mosta/CLionProjects/Maze_Generator/main.cpp || cmake_object_order_depends_target_Maze_Generator
   DEP_FILE = CMakeFiles\Maze_Generator.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -IC:/libs/SDL/include
+  INCLUDES = -IC:/libs/SDL/include -IC:/libs/SDL_image/include
   OBJECT_DIR = CMakeFiles\Maze_Generator.dir
   OBJECT_FILE_DIR = CMakeFiles\Maze_Generator.dir
 
@@ -67,8 +67,8 @@ build CMakeFiles/Maze_Generator.dir/main.cpp.obj: CXX_COMPILER__Maze_Generator_D
 build Maze_Generator.exe: CXX_EXECUTABLE_LINKER__Maze_Generator_Debug CMakeFiles/Maze_Generator.dir/main.cpp.obj
   FLAGS = -g
   LINK_FLAGS = -Wl,--stack,16777216
-  LINK_LIBRARIES = -lSDL2main  -lSDL2  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  LINK_PATH = -LC:/libs/SDL/lib/x64
+  LINK_LIBRARIES = -lSDL2main  -lSDL2  -lSDL2_image  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_PATH = -LC:/libs/SDL/lib/x64   -LC:/libs/SDL_image/lib
   OBJECT_DIR = CMakeFiles\Maze_Generator.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

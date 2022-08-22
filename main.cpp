@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <SDL.h>
+#include <SDL_image.h>
 
 using namespace std;
 
@@ -15,7 +16,7 @@ const int SCREEN_HEIGHT = 480;
 double screen_w = (double) SCREEN_WIDTH;
 double screen_h = (double) SCREEN_HEIGHT;
 
-const int N = 1e3+10;
+const int N = 210;
 
 int n, m;
 const int dx[] = {1, -1, 0, 0};
@@ -102,6 +103,10 @@ int main(int argc, char* args[]) {
 
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         if (SDL_CreateWindowAndRenderer((int)SCREEN_WIDTH, (int)SCREEN_HEIGHT, 0, &window, &renderer) == 0) {
+            SDL_SetWindowTitle(window, "Maze Generator");
+            SDL_Surface* icon = IMG_Load("Icon.ico");
+            SDL_SetWindowIcon(window, icon);
+
             while (!done) {
                 if (first) {
                     SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);

@@ -30,25 +30,37 @@
 			{
 				"command" : 0,
 				"file" : 0,
+				"line" : 19,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
 				"line" : 15,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 13,
+				"line" : 17,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 17,
+				"line" : 21,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 12,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 16,
 				"parent" : 0
 			}
 		]
@@ -68,8 +80,12 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 4,
+					"backtrace" : 5,
 					"path" : "C:/libs/SDL/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/libs/SDL_image/include"
 				}
 			],
 			"language" : "CXX",
@@ -107,12 +123,22 @@
 			},
 			{
 				"backtrace" : 3,
+				"fragment" : "-LC:\\libs\\SDL_image\\lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 4,
 				"fragment" : "-lSDL2main",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 3,
+				"backtrace" : 4,
 				"fragment" : "-lSDL2",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lSDL2_image",
 				"role" : "libraries"
 			},
 			{
