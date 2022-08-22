@@ -104,7 +104,7 @@ int main(int argc, char* args[]) {
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         if (SDL_CreateWindowAndRenderer((int)SCREEN_WIDTH, (int)SCREEN_HEIGHT, 0, &window, &renderer) == 0) {
             SDL_SetWindowTitle(window, "Maze Generator");
-            SDL_Surface* icon = IMG_Load("Icon.ico");
+            SDL_Surface* icon = IMG_Load("Icon.png");
             SDL_SetWindowIcon(window, icon);
 
             while (!done) {
