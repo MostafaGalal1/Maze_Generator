@@ -16,20 +16,18 @@ const int SCREEN_HEIGHT = 480;
 double screen_w = (double) SCREEN_WIDTH;
 double screen_h = (double) SCREEN_HEIGHT;
 
-const int N = 210;
+const int N = 310;
 
 int n, m;
 const int dx[] = {1, -1, 0, 0};
 const int dy[] = {0, 0, 1, -1};
 
 bool visited[N][N];
-long long cnt = 0;
 
 void generate_maze(int x, int y){
     visited[x][y] = true;
     vector<pair<int, int>> available;
-    cnt++;
-    cout << cnt << endl;
+
     for (int i = 0; i < 4; ++i) {
         int nx = x + dx[i], ny = y + dy[i];
         if (nx < 0 || nx > n-1 || ny < 0 || ny > m-1 || visited[nx][ny])
@@ -77,7 +75,7 @@ void generate_maze(int x, int y){
             }
         }
 
-        SDL_Delay(1000/144);
+        SDL_Delay(1000/80);
         SDL_RenderPresent(renderer);
 
         generate_maze(sx, sy);
@@ -90,13 +88,24 @@ void generate_maze(int x, int y){
         SDL_RenderFillRect(renderer, &cur);
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
 
-        SDL_Delay(1000/144);
+        SDL_Delay(1000/80);
         SDL_RenderPresent(renderer);
     }
 }
 
 int main(int argc, char* args[]) {
-    cin >> n >> m;
+    cout << "Enter maze size (from 5 to 200): ";
+    n = -1, m = -1;
+
+    while (n < 5 || n > 200){
+        cin >> n;
+        if (n < 5 || n > 200) {
+            cout << "Please enter a number between 5 and 200 inclusively\n";
+            cout << "Enter maze size (from 5 to 200): ";
+        }
+    }
+
+    m = n;
     bool first = true;
 
     srand(time(nullptr));
@@ -109,6 +118,7 @@ int main(int argc, char* args[]) {
 
             while (!done) {
                 if (first) {
+                    cout << "Generating...\n";
                     SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
                     SDL_RenderClear(renderer);
 
@@ -130,11 +140,23 @@ int main(int argc, char* args[]) {
                     SDL_RenderPresent(renderer);
 
                     SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+                    SDL_RenderDrawLine(renderer, 1, 1, 1,
+                                       (int)(1 + screen_h / n));
                     SDL_RenderDrawLine(renderer, (int)(1 + screen_w), (int)(1 + screen_h / n * (n - 1)), (int)(1 + screen_w),
                                        (int)(1 + screen_h));
 
                     generate_maze(0, 0);
+
+                    SDL_Rect src;
+                    src.x = 2;
+                    src.y = 2;
+                    src.w = (int)(screen_w / m - 1);
+                    src.h = (int)(screen_h / n - 1);
+                    SDL_RenderFillRect(renderer, &src);
+
                     SDL_RenderPresent(renderer);
+
+                    cout << "Done\n";
                     first = false;
                 }
 
